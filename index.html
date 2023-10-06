@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <script defer src="Dizionario/script-Dizionario.js"></script>
+    <script defer src="Dizionario/script-Dizionario2.js"></script>
+    <title>EseCode</title>
+</head>
+<body>
+
+    <div class="containerTOP">
+        <h1 class="text-titolo">Squadra</h1>
+        <div class="containerTOP2">
+            <button type="button" id="BottonePulisci" onclick="ricaricaPagina()">Pulisci</button>
+            <input type="text" id="VecchiaParola" name="VecchiaParola" placeholder="Parola tradotta" readonly>
+            <input type="text" id="DizionarioVeloce" name="DizionarioVeloce" placeholder="Traduttore veloce" autocomplete="off" oninput="traduciElemento(this, traduzioniStrumenti); traduciElemento(this, traduzioniNomiMosse); traduciElemento(this, traduzioniAbilita); traduciElemento(this, traduzioniNomiPokemon); traduciElemento(this, traduzioniTipo); traduciElemento(this, traduzioniNature); traduciElemento(this, traduzioniPokebigne); traduciElemento(this, traduzioniBolli); traduciElemento(this, traduzioniGrandiSotterranei); traduciElemento(this, traduzioniGiochi); traduciElemento(this, traduzioniSfondi); traduciElemento(this, traduzioniRegioni); traduciElemento(this, traduzioniClassiAllenatori)">
+        </div>
+    </div>
+
+
+    <hr color="#fff" size="2" width="100%" align="left" style="color: #fff;">
+
+    <form id="pokemon-form">
+        <label for="NomeAllenatore">Nome Allenatore:</label>
+        <input type="text" id="NomeAllenatore" autocomplete="off" name="NomeAllenatore" oninput="capitalizeInput(this)">
+
+        <label for="ClasseAllenatore">Classe Allenatore:</label>
+        <input type="text" id="ClasseAllenatore" autocomplete="off" name="ClasseAllenatore" list="classtrainer" class="translation-input" oninput="traduciElemento(this, traduzioniClassiAllenatori); capitalizeInput(this)">
+        <label for="Sprite">Sprite Allenatore:</label>
+        <input type="text" id="Sprite" autocomplete="off" name="Sprite">
+
+        <br><br>
+
+        <label for="Colore1">Colore 1:</label>
+        <input type="text" id="Colore1" autocomplete="off" name="Colore1">
+
+        <label for="Colore2">Colore 2:</label>
+        <input type="text" id="Colore2" autocomplete="off" name="Colore2" placeholder="Opzionale">
+
+        <label for="TotalePokemon">Quantità:</label>
+        <select id="TotalePokemon" name="TotalePokemon" title="Pokémon presenti nella squadra">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <label for="informazione" title="Pokémon presenti nella squadra">i</label>
+        <br><br>
+
+        <label for="Gioco">Gioco:</label>
+        <input type="text" id="Gioco" autocomplete="off" name="Gioco" placeholder="Sigla" list="siglaGiochi">
+
+        <label for="Ricompensa">Ricompensa:</label>
+        <input type="text" id="Ricompensa" autocomplete="off" name="Ricompensa" oninput="formatNumber(this)">
+
+        <label for="posizione">Posizione:</label>
+        <input type="text" id="posizione" autocomplete="off" name="posizione" list="location" oninput="traduciElemento(this, traduzioniPosizione); capitalizeInput(this)">
+
+        <label for="region">Regione:</label>
+        <input type="text" id="region" autocomplete="off" name="region" list="regioni" placeholder="Opzionale" oninput="traduciElemento(this, traduzioniRegioni); capitalizeInput(this)">
+        <br><br><br>
+
+        <div class="container">
+            <table id="pokemon-info">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pokédex</th>
+                        <th>Nome</th>
+                        <th>Livello</th>
+                        <th>Sesso</th>
+                        <th>Abilità</th>
+                        <th>Strumento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Primo Pokémon -->
+                    <tr>
+                        <td style="text-align: center;"><label style="color: black; width: 20px;" for="pokemon1">1</label></td>
+                        <td style="text-align: center;"><input style="text-align: center;" id="ndex1" autocomplete="off" name="pokemon1-ndex" type="number" class="translation-input"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" id="pokemon1" list="species" autocomplete="off" name="pokemon1-name" type="text" class="translation-input" oninput="traduciElemento(this, traduzioniNomiPokemon); capitalizeInput(this)"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" id="level1" max="100" min="1" autocomplete="off" name="pokemon1-level" type="number" class="translation-input" oninput="validateInput(this)"></td>
+                        <td style="text-align: center;">
+                            <select id="sesso1" name="pokemon1-sesso" style="text-align: center;">
+                                <option value="♂">♂</option>
+                                <option value="♀">♀</option>
+                                <option value=" ">Sconosciuto</option>
+                                <option value="Both">Entrambi</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;"><input style="text-align: center;" id="ability1" list="abilities" autocomplete="off" name="pokemon1-ability" type="text" class="translation-input" oninput="traduciElemento(this, traduzioniAbilita); capitalizeInput(this)"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" id="item1" list="itemssug" autocomplete="off" name="pokemon1-item" type="text" placeholder="'none' se non presente" class="translation-input" oninput="traduciElemento(this, traduzioniStrumenti); capitalizeInput(this)"></td>
+                    </tr>
+                    <!-- Mosse -->
+                    <tr>
+                        <td class="move-label" style="text-align:center">Mossa 1</td>
+                        <td class="move-input" colspan="4">
+                            <input id="pk1move1" list="moveslist" autocomplete="off" name="pk1-move1" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
+                            <input id="pk1type1" list="types" autocomplete="off" name="pk1-move1" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                            <select id="pk1cat1" name="pk1cat1">
+                                <option value="Speciale">Speciale</option>
+                                <option value="Fisico">Fisico</option>
+                                <option value="Stato">Stato</option>
+                            </select>
+                        </td>
+                        <td class="move-label" style="text-align:center"><b>Tipo</b></td>
+                        <td class="move-input" colspan="2">
+                            <input id="pkm1type1" list="types" autocomplete="off" name="pkm1-type1" type="text" placeholder="Primo tipo del Pokémon" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                            <input id="pkm1type2" list="types" autocomplete="off" name="pkm1-type2" type="text" placeholder="Secondo tipo (opzionale)" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="move-label" style="text-align:center">Mossa 2</td>
+                        <td class="move-input" colspan="4">
+                            <input id="pk1move2" list="moveslist" autocomplete="off" name="pk1-move2" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
+                            <input id="pk1type2" list="types" autocomplete="off" name="pk1-move2" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                            <select id="pk1cat2" name="pk1cat2">
+                                <option value="Speciale">Speciale</option>
+                                <option value="Fisico">Fisico</option>
+                                <option value="Stato">Stato</option>
+                            </select>
+                        </td>
+                        <td class="move-label" style="text-align:center"><b>Forma</b></td>
+                        <td class="move-input" colspan="2">
+                            <select id="pk1cat2" name="pk1cat2">
+                                <option value="N">Normale</option>
+                                <option value="A">Alola</option>
+                                <option value="G">Galar</option>
+                                <option value="H">Hisui</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="move-label" style="text-align:center">Mossa 3</td>
+                        <td class="move-input" colspan="6">
+                            <input id="pk1move3" list="moveslist" autocomplete="off" name="pk1-move3" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
+                            <input id="pk1type3" list="types" autocomplete="off" name="pk1-move3" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                            <select id="pk1cat3" name="pk1cat3">
+                                <option value="Speciale">Speciale</option>
+                                <option value="Fisico">Fisico</option>
+                                <option value="Stato">Stato</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="move-label" style="text-align:center">Mossa 4</td>
+                        <td class="move-input" colspan="6">
+                            <input id="pk1move4" list="moveslist" autocomplete="off" name="pk1-move4" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
+                            <input id="pk1type4" list="types" autocomplete="off" name="pk1-move4" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioneTipo); capitalizeInput(this)">
+                            <select id="pk1cat4" name="pk1cat4">
+                                <option value="Speciale">Speciale</option>
+                                <option value="Fisico">Fisico</option>
+                                <option value="Stato">Stato</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <br><br>
+        <input type="submit" value="Genera WikiCode">
+        <button id="copyButton">Copia</button>
+
+        <div id="wikicode-result">
+            <!-- Stringa di wikicode -->
+        </div>
+    </form>
+</body>
+</html>
