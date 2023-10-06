@@ -50,6 +50,12 @@
     });
 });
 
+function selezionaTesto(inputElement) {
+    if (inputElement.value === "0") {
+        inputElement.select();
+    }
+}
+
 function formatNumber(input) {
     input.value = input.value.replace(/[^0-9,.]/g, '');
 
@@ -58,6 +64,23 @@ function formatNumber(input) {
     if (value !== '' && !isNaN(value)) {
         var formattedValue = parseFloat(value).toLocaleString('it-IT');
         input.value = formattedValue;
+    }
+}
+
+function ValoreaModifica(inputElement) {
+    var inputValue = inputElement.value.trim();
+    var idlivello = ["level1", "level2", "level3", "level4", "level5", "level6"];
+    var idndex = ["ndex2", "ndex2", "ndex2", "ndex2", "ndex2", "ndex2"];
+
+    if (inputValue === "" || isNaN(inputValue)) {
+        if (!idlivello.includes(inputElement.id) || !idndex.includes(inputElement.id)) {
+            inputElement.value = "0";
+            inputElement.value = "1";
+        }
+    }
+
+    if (inputElement.id === "ndex1" && inputValue === "0") {
+        inputElement.value = "1";
     }
 }
 
@@ -92,20 +115,6 @@ function checkLevel1(input) {
     }
 }
 
-function changeBackgroundColor(select) {
-    var selectedValue = select.options[select.selectedIndex].value;
-    if (selectedValue === "♂") {
-        select.style.backgroundColor = "blue";
-        select.style.color = "white";
-    } else if (selectedValue === "♀") {
-        select.style.backgroundColor = "red";
-        select.style.color = "white";
-    } else {
-        select.style.backgroundColor = "";
-        select.style.color = "";
-    }
-}
-
 function capitalizeInput(input) {
     const inputValue = input.value;
     const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
@@ -129,23 +138,13 @@ function immaginePokémon(inputElement) {
     var Numero_Pokedex = inputElement.value;
     var immagine;
     immagine = document.getElementById("immaginepkm" + idElement.charAt(4));
-    immagine.src = url_immaginePrefix + Numero_Pokedex + ".png";
-}
 
-function ValoreaModifica(inputElement) {
-    var inputValue = inputElement.value.trim();
-    var idlivello = ["level1", "level2", "level3", "level4", "level5", "level6"];
-
-    if (inputValue === "" || isNaN(inputValue)) {
-        if (!idlivello.includes(inputElement.id)) {
-            inputElement.value = "0";
-        } else {
-            inputElement.value = "1";
-        }
+    if (Numero_Pokedex !== "0" && Numero_Pokedex !== "" && immagine.src !== "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png" && immagine.src !== "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/.png") {
+        immagine.src = url_immaginePrefix + Numero_Pokedex + ".png";
     }
 }
 
-function Numero_in_Nome(inputElement) {
+function NumeroInNome(inputElement) {
     var numero_pokedex = inputElement.value;
 
     var nome_pokemon = document.getElementById("pokemon1");
@@ -154,12 +153,6 @@ function Numero_in_Nome(inputElement) {
 
     if (translatedText !== inputElement.value) {
         nome_pokemon.value = translatedText;
-    }
-}
-
-function selezionaTesto(inputElement) {
-    if (inputElement.value === "0") {
-        inputElement.select();
     }
 }
 
@@ -181,8 +174,9 @@ function puliziaAllenatore() {
 
 function puliziaSquadra() {
     // Pokémon
-    document.getElementById('ndex1').value = "0";
-    document.getElementById('pokemon1').value = "";
+    document.getElementById('immaginepkm1').src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png";
+    document.getElementById('ndex1').value = "1";
+    document.getElementById('pokemon1').value = "Bulbasaur";
     document.getElementById('level1').value = "1";
     document.getElementById('sesso1').value = "♂";
     document.getElementById('ability1').value = "";

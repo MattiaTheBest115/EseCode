@@ -11,46 +11,62 @@
     color: white;
 }
 
-@keyframes rainbow {
-    0% { border-color: red; }
-    14% {  border-color: orange; }
-    28% { border-color: yellow; }
-    42% { border-color: green; }
-    57% { border-color: blue; }
-    71% { border-color: indigo;  }
-    85% { border-color: violet; }
-    100% {  border-color: red; }
-}
-
-input[type="submit"],
-#copyButton {
-    background-color: #007BFF;
+#genWikiCode {
+    background-color: green;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
+    float: left;
+    clear: left;
+    margin-right: 10px;
 }
 
-input[type="submit"]:hover,
-#copyButton:hover {
-    background-color: #0056b3;
+    #genWikiCode:hover {
+        background-color: #0056b3;
+    }
+
+#copyButton {
+    background-color: darkblue;
+    /* Colore del testo all'interno del pulsante */
+    color: #fff;
+    /* Spaziatura interna del pulsante (10px sopra e sotto, 20px a sinistra e destra) */
+    padding: 10px 20px;
+    /* Rimuove il bordo del pulsante */
+    border: none;
+    /* Angoli arrotondati del pulsante */
+    border-radius: 4px;
+    /* Cambia l'icona del cursore al passaggio sopra il pulsante */
+    cursor: pointer;
+    /* Effetto di transizione del colore di sfondo in 0.3 secondi */
+    transition: background-color 0.3s;
+    /* Posiziona l'elemento a sinistra rispetto agli elementi successivi */
+    float: left;
+    /* Cancella il float a sinistra per evitare l'interferenza con gli elementi successivi */
+    clear: left;
+    /* Margine a destra dell'elemento (10px di spazio a destra) */
+    margin-right: 10px;
 }
 
-#copyButton:active {
-    background-color: #1f6dab;
-}
+    #copyButton:hover {
+        background-color: #0056b3;
+    }
+
+    #copyButton:active {
+        background-color: #1f6dab;
+    }
 
 #pokemon-form {
     width: auto;
     margin: auto;
 }
 
-.containerTOP2 {
+.containerTOP2, .containerTOP {
     display: flex;
     flex-direction: column;
-    align-items: self-end;
+    align-items: flex-end;
     text-align: center;
 }
 
@@ -76,19 +92,9 @@ input[type="text"] {
     border: 1px solid;
 }
 
-.container > div {
-    flex-basis: 48%;
-}
-
-option[value="♂"] {
-    background-color: blue;
-    color: white;
-}
-
-option[value="♀"] {
-    background-color: red;
-    color: white;
-}
+    .container > div {
+        flex-basis: 48%;
+    }
 
 label {
     display: inline-block;
@@ -96,6 +102,7 @@ label {
     color: yellow;
     position: relative;
     text-transform: capitalize;
+    font-weight: bold;
 }
 
 input {
@@ -104,7 +111,7 @@ input {
 }
 
 table {
-    background: url('https://i.imgur.com/1er0CtW.jpeg');
+    background: url('https://i.imgur.com/E42O3Su.jpeg');
     background-size: cover;
     width: 100%;
     border-collapse: collapse;
@@ -118,8 +125,7 @@ tr {
     padding: 0;
 }
 
-th,
-td {
+th, td {
     padding: 10px;
     border: 2px solid black;
 }
@@ -137,6 +143,7 @@ td {
     border-radius: 5px;
     display: inline-block;
     margin-top: 6px;
+    margin-left: auto;
 }
 
 #DizionarioVeloce {
@@ -149,38 +156,36 @@ td {
     display: inline-block;
     padding: 4px 6px;
     margin-top: 6px;
+    margin-left: auto;
 }
 
-.containerTOP {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.button-container {
     text-align: center;
 }
 
-.text-titolo {
-    margin-right: auto;
-}
-
-#VecchiaParola,
-#DizionarioVeloce,
-button[type="button"] {
-    margin-left: auto; 
-}
-
-button[type="button"], #BottonePulisci {
-    background-color: #ff0000;
-    color: #fff;
-    padding: 6px 5px;
-    border: none;
-    border-radius: 11px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 1px;
-}
-
-    #BottonePulisci[type="button"]:hover {
-        background-color: #ff3333;
+    .button-container button {
+        display: inline-block;
+        margin-right: 10px;
+        background-color: #d9534f;
+        color: #fff;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-right: 10px;
     }
+
+        .button-container button:hover {
+            background-color: #c9302c;
+        }
+
+        .button-container button:active {
+            background-color: #ac2925;
+        }
+
+#wikicode-result {
+    color: #333;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
