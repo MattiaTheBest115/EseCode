@@ -51,9 +51,7 @@
 });
 
 function selezionaTesto(inputElement) {
-    if (inputElement.value === "0") {
-        inputElement.select();
-    }
+    inputElement.select();
 }
 
 function formatNumber(input) {
@@ -71,16 +69,26 @@ function ValoreaModifica(inputElement) {
     var inputValue = inputElement.value.trim();
     var idlivello = ["level1", "level2", "level3", "level4", "level5", "level6"];
     var idndex = ["ndex2", "ndex2", "ndex2", "ndex2", "ndex2", "ndex2"];
+    var Ricompensa = document.getElementById("Ricompensa");
 
     if (inputValue === "" || isNaN(inputValue)) {
         if (!idlivello.includes(inputElement.id) || !idndex.includes(inputElement.id)) {
-            inputElement.value = "0";
             inputElement.value = "1";
         }
     }
-
-    if (inputElement.id === "ndex1" && inputValue === "0") {
+    else if (inputElement.id === "ndex1" && (inputValue === "0" || inputValue === "1")) {
         inputElement.value = "1";
+        immaginePokémon(1);
+    }
+    else if (Ricompensa === "Ricompensa" && inputvalue === "") {
+        inputElement.value = "0";
+    }
+}
+
+function controlloNome(inputElement) {
+    var inputValue = inputElement.value.trim();
+    if (inputValue.value === "") {
+        inputElement.value = "Bulbasaur";
     }
 }
 
@@ -104,22 +112,25 @@ function validateInput(inputElement) {
     }
 }
 
-function checkLevel1(input) {
-    var value = parseInt(input.value, 10);
-    if (isNaN(value)) {
-        input.value = 0;
-    } else if (value < 0) {
-        input.value = 0;
-    } else if (value > 255) {
-        input.value = 255;
-    }
-}
-
 function capitalizeInput(input) {
     const inputValue = input.value;
     const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
     input.value = capitalizedValue;
 }
+
+function immaginePokémon() {
+    var url_immaginePrefix = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_";
+    var idElement = document.getElementById("ndex1");
+    var Numero_Pokedex = idElement.value;
+    var immagine = document.getElementById("immaginepkm1");
+
+    if (immagine.src !== "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_.png") {
+        if (Numero_Pokedex !== "0" && Numero_Pokedex !== "") {
+            immagine.src = url_immaginePrefix + Numero_Pokedex + ".png";
+        }
+    }
+}
+
 
 function traduciElemento(inputElement, dizionario) {
     var inputText = inputElement.value.toLowerCase();
@@ -132,18 +143,6 @@ function traduciElemento(inputElement, dizionario) {
     }
 }
 
-function immaginePokémon(inputElement) {
-    var url_immaginePrefix = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
-    var idElement = inputElement.id;
-    var Numero_Pokedex = inputElement.value;
-    var immagine;
-    immagine = document.getElementById("immaginepkm" + idElement.charAt(4));
-
-    if (Numero_Pokedex !== "0" && Numero_Pokedex !== "" && immagine.src !== "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png" && immagine.src !== "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/.png") {
-        immagine.src = url_immaginePrefix + Numero_Pokedex + ".png";
-    }
-}
-
 function NumeroInNome(inputElement) {
     var numero_pokedex = inputElement.value;
 
@@ -153,6 +152,24 @@ function NumeroInNome(inputElement) {
 
     if (translatedText !== inputElement.value) {
         nome_pokemon.value = translatedText;
+    }
+    else {
+        nome_pokemon.value = "???";
+    }
+}
+
+function NomeInNumero(inputElement) {
+    var numero_pokedex = inputElement.value.toLowerCase();
+
+    var nome_pokemon = document.getElementById("ndex1");
+
+    var translatedText = Nome_in_Numero[numero_pokedex] || inputElement.value;
+
+    if (translatedText !== inputElement.value) {
+        nome_pokemon.value = translatedText;
+    }
+    else {
+        nome_pokemon.value = "???";
     }
 }
 
@@ -174,7 +191,7 @@ function puliziaAllenatore() {
 
 function puliziaSquadra() {
     // Pokémon
-    document.getElementById('immaginepkm1').src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png";
+    document.getElementById('immaginepkm1').src = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_1.png";
     document.getElementById('ndex1').value = "1";
     document.getElementById('pokemon1').value = "Bulbasaur";
     document.getElementById('level1').value = "1";
