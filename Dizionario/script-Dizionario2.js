@@ -1181,4 +1181,8 @@ var traduzioniClassiAllenatori = {
     // da continuare
 };
 
+var Numero_in_Nome = {
+    "1": "Bulbasaur",
+}
+
 // traduzioniGrandiSotterranei / traduzioniGiochi / traduzioniSfondi / traduzioniRegioni / traduzioniClassiAllenatori
