@@ -1,4 +1,4 @@
-﻿document.getElementById('genWikiCode').addEventListener('click', function () {
+﻿document.getElementById('genWikiCodeAllenatore').addEventListener('click', function () {
 
     const Nome_Allenatore = document.getElementById("NomeAllenatore").value;
     const Classe_Allenatore = document.getElementById("ClasseAllenatore").value;
