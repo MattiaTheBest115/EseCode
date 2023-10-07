@@ -65,7 +65,7 @@
         <label for="Ricompensa">Ricompensa:</label>
         <input type="text" id="Ricompensa" autocomplete="off" value="0" onclick="selezionaTesto(this)" oninput="formatNumber(this)" onblur="ValoreAzero(this)">
         <label for="posizione">Posizione:</label>
-        <input type="text" id="Posizione" autocomplete="off" list="location" onclick="selezionaTesto(this); selezionaTesto(this)" capitalizeInput(this)">
+        <input type="text" id="Posizione" autocomplete="off" list="location" onclick="selezionaTesto(this)" oninput="capitalizeInput(this)">
 
         <label for="region">Regione:</label>
         <input type="text" id="Regione" autocomplete="off" placeholder="Opzionale" list="regioni" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniRegioni); capitalizeInput(this)">
@@ -86,7 +86,20 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
-                            </select>
+                            </select> 
+                            <select id="Generazione" title="Generazione">
+                                <option value="">-</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select> <br>
+                            <input style="text-align:center; width: 75px;" type="text" id="NomeGioco" autocomplete="off" placeholder="Gioco" list="NomiGiochi" onclick="selezionaTesto(this)" oninput="capitalizeInput(this)">
                         </th>
                         <th>Pokédex</th>
                         <th>Nome</th>
@@ -104,14 +117,15 @@
                         </td>
                         <td style="text-align: center;">
                             <!-- NUMERO POKEDEX-->
-                            <input style="text-align: center;" type="number" id="ndex1" autocomplete="off" class="translation-input" value="1" min="1" onclick="selezionaTesto(this)" oninput="immaginePokémon(); impostaNomeDaNdex(this);" onblur="ValoreAuno(this)">
+                            <input style="text-align: center; width: 55px;" type="number" id="ndex1" autocomplete="off" class="translation-input" value="1" min="1" onclick="selezionaTesto(this)" oninput="immaginePokémon(); impostaNomeDaNdex(this);" onblur="ValoreAuno(this)">
                         </td>
                         <td style="text-align: center;">
                             <!-- NOME POKEMON-->
                             <input style="text-align: center;" type="text" id="pokemon1" list="species" autocomplete="off" class="translation-input" value="Bulbasaur" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniNomiPokemon); impostaNdexDaPokemon(this); capitalizeInput(this)" onblur="impostaBulbasaur(this)">
                         </td>
                         <!-- LIVELLO POKEMON-->
-                        <td style="text-align: center;"><input style="text-align: center;" type="number" id="level1" autocomplete="off" class="translation-input" value="1" max="100" min="1" onclick="selezionaTesto(this)" oninput="ValidaLivello(this)" onblur="livelloa1(this)"></td>
+                        <td style="text-align: center;">
+                        <input style="text-align: center; width: 55px;" type="number" id="livello1" autocomplete="off" class="translation-input" value="1" max="100" min="1" onclick="selezionaTesto(this)" oninput="ValidaLivello(this)" onblur="livelloa1(this)"></td>
                         <!-- SESSO POKEMON-->
                         <td style="text-align: center;">
                             <select style="text-align: center;" id="sesso1">
@@ -122,17 +136,17 @@
                             </select>
                         </td>
                         <!-- ABILITA POKEMON-->
-                        <td style="text-align: center;"><input style="text-align: center;" type="text" id="ability1" autocomplete="off" class="translation-input" list="abilities" oninput="traduciElemento(this, traduzioniAbilita); capitalizeInput(this)" onclick="selezionaTesto(this)"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" type="text" id="abilita1" autocomplete="off" class="translation-input" list="abilities" oninput="traduciElemento(this, traduzioniAbilita); capitalizeInput(this)" onclick="selezionaTesto(this)"></td>
                         <!-- STRUMENTO TENUTO POKEMON-->
-                        <td style="text-align: center;"><input style="text-align: center;" type="text" id="item1" autocomplete="off" class="translation-input" placeholder="'none' se non presente" list="itemssug" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniStrumenti); capitalizeInput(this)"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" type="text" id="strumenti1" autocomplete="off" class="translation-input" placeholder="'Nessuno' se non presente" list="itemssug" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniStrumenti); capitalizeInput(this)"></td>
                     </tr>
                     <!-- Mosse -->
                     <tr>
                         <td class="move-label" style="text-align:center"><b>Mossa 1</b></td>
                         <td class="move-input" colspan="4">
-                            <input id="pk1move1" type="text" list="moveslist" autocomplete="off" class="translation-input" placeholder="Nome della mossa" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
-                            <input id="pk1type1" type="text" list="types" autocomplete="off" class="translation-input" placeholder="Tipo della mossa" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
-                            <select id="pk1cat1" name="pk1cat1">
+                            <input id="mossa1" type="text" list="moveslist" autocomplete="off" class="translation-input" placeholder="Nome della mossa" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)">
+                            <input id="tipo1" type="text" list="types" autocomplete="off" class="translation-input" placeholder="Tipo della mossa" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)">
+                            <select id="categoria1">
                                 <option value="Speciale">Speciale</option>
                                 <option value="Fisico">Fisico</option>
                                 <option value="Stato">Stato</option>
@@ -143,27 +157,27 @@
                     <tr>
                         <td class="move-label" style="text-align:center"><b>Mossa 2</b></td>
                         <td class="move-input" colspan="4">
-                            <input id="pk1move2" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <input id="pk1type2" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <select id="pk1cat2">
+                            <input id="mossa2" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <input id="tipo2" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <select id="categoria2">
                                 <option value="Speciale">Speciale</option>
                                 <option value="Fisico">Fisico</option>
                                 <option value="Stato">Stato</option>
                             </select>
                         </td>
                         <td class="move-input" style="align-content:center">
-                            <input id="pkm1type1" list="types" autocomplete="off" type="text" placeholder="Primo tipo del Pokémon" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <input style="text-align: center;" id="PKMtipo1" list="types" autocomplete="off" type="text" placeholder="Primo tipo del Pokémon" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
                         </td>
-                        <td class="move-input" style="align-content:center">
-                            <input id="pkm1type2" list="types" autocomplete="off" type="text" placeholder="Primo tipo del Pokémon" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                        <td style="align-content:center" class="move-input">
+                            <input style="text-align: center;" id="PKMtipo2" list="types" autocomplete="off" type="text" placeholder="Secondo tipo del Pokémon" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
                         </td>
                     </tr>
                     <tr>
                         <td class="move-label" style="text-align:center"><b>Mossa 3</b></td>
                         <td class="move-input" colspan="4">
-                            <input id="pk1move3" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <input id="pk1type3" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <select id="pk1cat3">
+                            <input id="mossa3" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <input id="tipo3" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <select id="categoria3">
                                 <option value="Speciale">Speciale</option>
                                 <option value="Fisico">Fisico</option>
                                 <option value="Stato">Stato</option>
@@ -174,16 +188,16 @@
                     <tr>
                         <td class="move-label" style="text-align:center"><b>Mossa 4</b></td>
                         <td class="move-input" colspan="4">
-                            <input id="pk1move4" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <input id="pk1type4" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
-                            <select id="pk1cat4" name="pk1cat4">
+                            <input id="mossa4" list="moveslist" autocomplete="off" type="text" placeholder="Nome della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniNomiMosse); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <input id="tipo4" list="types" autocomplete="off" type="text" placeholder="Tipo della mossa" class="translation-input" oninput="traduciElemento(this, traduzioniTipo); capitalizeInput(this)" onclick="selezionaTesto(this)">
+                            <select id="categoria4">
                                 <option value="Speciale">Speciale</option>
                                 <option value="Fisico">Fisico</option>
                                 <option value="Stato">Stato</option>
                             </select>
                         </td>
                         <td class="move-input" colspan="2" style="text-align:center">
-                            <select id="pk1form1" style="text-align:center">
+                            <select id="forma1" style="text-align:center">
                                 <option value="N">Normale</option>
                                 <option value="A">Alola</option>
                                 <option value="G">Galar</option>
@@ -3006,7 +3020,7 @@
         <option value="VR">VR (Verde Fuoco)</option>
         <option value="D">D (Diamante)</option>
         <option value="P">P (Perla)</option>
-        <option value="Pl">Pl (Platino)</option>
+        <option value="Pl">Pt (Platino)</option>
         <option value="HG">HG (Heart Gold)</option>
         <option value="SS">SS (Soul Silver)</option>
         <option value="N">N (Nero)</option>
@@ -3021,7 +3035,7 @@
         <option value="L">L (Luna)</option>
         <option value="Us">Us (Ultra Sole)</option>
         <option value="Ul">Ul (Ultra Luna)</option>
-        <option value="LGP">LGP (Let's Go, Pikachue)</option>
+        <option value="LGP">LGP (Let's Go, Pikachu)</option>
         <option value="LGE">LGE (Let's Go, Eevee)</option>
         <option value="Sp">Sp (Spada)</option>
         <option value="Sc">Sc (Scudo)</option>
@@ -3029,9 +3043,32 @@
         <option value="TC">TC (Isola dell'Armatura)</option>
         <option value="DL">DL (Diamante Lucente)</option>
         <option value="PS">PS (Perla Splendente)</option>
+        <option value="LPA">LPA (Leggende Pokémon: Arceus)</option>
         <option value="S">S (Scarlatto)</option>
         <option value="V">V (Violetto)</option>
         <option value="MT">MT (La maschera turchese)</option>
+        <option value="St">St (Stadium)</option>
+        <option value="S2">S2 (Stadium 2)</option>
+        <option value="RB">RB (Rosso e Blu)</option>
+        <option value="RBY">RBY (Rosso, Blu e Giallo)</option>
+        <option value="OA">OA (Oro e Argento)</option>
+        <option value="OAC">OAC (Oro, Argento e Cristallo)</option>
+        <option value="RZ">RZ (Rubino e Zaffiro)</option>
+        <option value="RZS">RZS (Rubino, Zaffiro e Smeraldo)</option>
+        <option value="DP">DP (Diamante e Perla)</option>
+        <option value="DPPt">DPPt (Diamante, Perla e Platino)</option>
+        <option value="DPPtHGSS">DPPtHGSS (Diamante, Perla, Platino, Oro HeartGold e Argento SoulSilver)</option>
+        <option value="PtHGSS">PtHGSS (Platino, Oro HeartGold e Argento SoulSilver)</option>
+        <option value="RFVF">RFVF (Rosso Fuoco e Verde Foglia)</option>
+        <option value="HGSS">HGSS (HeartGold e SoulSilver)</option>
+        <option value="NB">NB (Nero e Bianco)</option>
+        <option value="NN2">NN2 (Nero e Nero 2)</option>
+        <option value="BB2">BB2 (Bianco e Bianco 2)</option>
+        <option value="N2B2">N2B2 (Nero 2 e Bianco 2)</option>
+        <option value="NBN2B2">NBN2B2 (Nero, Bianco, Nero 2 e Bianco 2)</option>
+        <option value="LGPE">LGPE (Let's Go, Pikachu e Eevee)</option>
+        <option value="SpSc">SpSc (Spada e Scudo)</option>
+        <option value="SV">SV (Scarlatto e Violetto)</option>
     </datalist>
 
     <datalist id="abilities">
@@ -5271,6 +5308,42 @@
         <option value="Spruzzatè"></option>
         <option value="Bomba Sciroppata"></option>
         <option value="Clava di Liane"></option>
+    </datalist>
+
+    <datalist id="NomiGiochi">
+        <option value="Rosso">Rosso</option>
+        <option value="Verde">Verde</option>
+        <option value="Giallo">Giallo</option>
+        <option value="Blu">Blu</option>
+        <option value="Oro">Oro</option>
+        <option value="Argento">Argento</option>
+        <option value="Cristallo">Cristallo</option>
+        <option value="Rubino">Rubino</option>
+        <option value="Zaffiro">Zaffiro</option>
+        <option value="Smeraldo">Smeraldo</option>
+        <option value="RF">RossoFuoco</option>
+        <option value="VF">VerdeFoglia</option>
+        <option value="Diamante">Diamante</option>
+        <option value="Perla">Perla</option>
+        <option value="Platino">Platino</option>
+        <option value="HeartGold">HeartGold</option>
+        <option value="SoulSilver">SoulSilver</option>
+        <option value="Nero">Nero</option>
+        <option value="Bianco">Bianco</option>
+        <option value="X">X</option>
+        <option value="Y">Y</option>
+        <option value="Sole">Sole</option>
+        <option value="Luna">Luna</option>
+        <option value="UltraSole">UltraSole</option>
+        <option value="UltraLuna">UltraLuna</option>
+        <option value="Spada">Spada</option>
+        <option value="Scudo">Scudo</option>
+        <option value="DLPS">Diamante Lucente</option>
+        <option value="DLPS">Perla Splendente</option>
+        <option value="LGPE">LGPE</option>
+        <option value="Scarlatto">Scarlatto</option>
+        <option value="Violetto">Violetto</option>
+        <option value="Stad2">Stadium 2</option>
     </datalist>
 </body>
 </html>

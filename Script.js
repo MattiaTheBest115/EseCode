@@ -1,46 +1,4 @@
-﻿document.getElementById('genWikiCodeAllenatore').addEventListener('click', function () {
-    const Nome_Allenatore = document.getElementById("NomeAllenatore").value;
-    const Classe_Allenatore = document.getElementById("ClasseAllenatore").value;
-    const Sprite_Allenatore = document.getElementById("SpriteAllenatore").value;
-    const Colore1 = document.getElementById("Colore1").value;
-    const Colore2 = document.getElementById("Colore2").value;
-    const Totale_Pokemon = document.getElementById("TotalePokemon").value;
-    const Gioco = document.getElementById("Gioco").value;
-    const Ricompensa = document.getElementById("Ricompensa").value;
-    const Posizione = document.getElementById("Posizione").value;
-    const Regione = document.getElementById("Regione").value;
-
-    document.getElementById("wikicode-result").textContent = `{{Squadra
-|type=${Colore1} 
-|type2=${Colore2} 
-|pokemon=${Totale_Pokemon} 
-|sprite=${Sprite_Allenatore} 
-|prize=${Ricompensa} {{PDollar}} 
-|class=${Classe_Allenatore} 
-|name=${Nome_Allenatore} 
-|game=${Gioco} 
-|location=[[${Posizione}]]
-`;
-
-    const copyButton = document.getElementById("copyButton");
-    const wikicodeResult = document.getElementById("wikicode-result");
-
-    copyButton.addEventListener("click", function () {
-        const range = document.createRange();
-        range.selectNodeContents(wikicodeResult);
-        const selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        document.execCommand("copy");
-        selection.removeAllRanges();
-        copyButton.textContent = "Copiato";
-        setTimeout(function () {
-            copyButton.textContent = "Copia";
-        }, 2000); 
-    });
-});
-
-function impostaNdexDaPokemon(inputElement) {
+﻿function impostaNdexDaPokemon(inputElement) {
     var nome_pokemon = inputElement.value.toLowerCase();
 
     var numero_pokedex = document.getElementById("ndex1");
@@ -135,7 +93,9 @@ function ValoreAuno(inputElement) {
 function livelloa1(inputElement) {
     var valore = inputElement.value;
 
-    inputElement.value = "1";
+    if (inputElement.value === "") {
+        inputElement.value = "1";
+    }
 }
 
 function impostaBulbasaur(inputElement) {
@@ -190,27 +150,136 @@ function puliziaAllenatore() {
 }
 
 function puliziaSquadra() {
-    document.getElementById('Numero_Pokemon').value = "1";
+    document.getElementById('Numero_Pokemon').value = " ";
+    document.getElementById('Generazione').value = "-";
+    document.getElementById('NomeGioco').value = "";
     document.getElementById('immaginepkm1').src = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_1.png";
     document.getElementById('ndex1').value = "1";
     document.getElementById('pokemon1').value = "Bulbasaur";
-    document.getElementById('level1').value = "1";
+    document.getElementById('livello1').value = "1";
     document.getElementById('sesso1').value = "♂";
-    document.getElementById('ability1').value = "";
-    document.getElementById('item1').value = "";
-    document.getElementById('pk1move1').value = "";
-    document.getElementById('pk1type1').value = "";
-    document.getElementById('pk1cat1').value = "Speciale";
-    document.getElementById('pk1move2').value = "";
-    document.getElementById('pk1type2').value = "";
-    document.getElementById('pk1cat2').value = "Speciale";
-    document.getElementById('pk1move3').value = "";
-    document.getElementById('pk1type3').value = "";
-    document.getElementById('pk1cat3').value = "Speciale";
-    document.getElementById('pk1move4').value = "";
-    document.getElementById('pk1type4').value = "";
-    document.getElementById('pk1cat4').value = "Speciale";
-    document.getElementById('pkm1type1').value = "";
-    document.getElementById('pkm1type2').value = "";
-    document.getElementById('pk1form1').value = "N";
+    document.getElementById('abilita1').value = "";
+    document.getElementById('strumenti1').value = "";
+    document.getElementById('mossa1').value = "";
+    document.getElementById('tipo1').value = "";
+    document.getElementById('categoria1').value = "Speciale";
+    document.getElementById('mossa2').value = "";
+    document.getElementById('tipo2').value = "";
+    document.getElementById('categoria2').value = "Speciale";
+    document.getElementById('mossa3').value = "";
+    document.getElementById('tipo3').value = "";
+    document.getElementById('categoria3').value = "Speciale";
+    document.getElementById('mossa4').value = "";
+    document.getElementById('tipo4').value = "";
+    document.getElementById('categoria4').value = "Speciale";
+    document.getElementById('PKMtipo1').value = "";
+    document.getElementById('PKMtipo2').value = "";
+    document.getElementById('forma1').value = "N";
 }
+
+// WIKI CODE ALLENATORE  
+document.getElementById('genWikiCodeAllenatore').addEventListener('click', function () {
+    const Nome_Allenatore = document.getElementById("NomeAllenatore").value;
+    const Classe_Allenatore = document.getElementById("ClasseAllenatore").value;
+    const Sprite_Allenatore = document.getElementById("SpriteAllenatore").value;
+    const Colore1 = document.getElementById("Colore1").value;
+    const Colore2 = document.getElementById("Colore2").value;
+    const Totale_Pokemon = document.getElementById("TotalePokemon").value;
+    const Gioco = document.getElementById("Gioco").value;
+    const Ricompensa = document.getElementById("Ricompensa").value;
+    const Posizione = document.getElementById("Posizione").value;
+    const Regione = document.getElementById("Regione").value;
+
+    document.getElementById("wikicode-result").textContent = `{{Squadra
+|type=${Colore1} 
+|type2=${Colore2} 
+|pokemon=${Totale_Pokemon} 
+|sprite=${Sprite_Allenatore} 
+|prize=${Ricompensa} {{PDollar}} 
+|class=${Classe_Allenatore} 
+|name=${Nome_Allenatore} 
+|game=${Gioco} 
+|location=[[${Posizione}]]
+`;
+
+    const copyButton = document.getElementById("copyButton");
+    const wikicodeResult = document.getElementById("wikicode-result");
+
+    copyButton.addEventListener("click", function () {
+        const range = document.createRange();
+        range.selectNodeContents(wikicodeResult);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        selection.removeAllRanges();
+        copyButton.textContent = "Copiato";
+        setTimeout(function () {
+            copyButton.textContent = "Copia";
+        }, 2000);
+    });
+});
+
+// WIKI CODE SQUADRA
+document.getElementById('genWikiCodeSquadra').addEventListener('click', function () {
+    const Numero_Pokemon = document.getElementById("Numero_Pokemon").value;
+    const Generazione = document.getElementById("Generazione").value;
+    const Nome_Gioco = document.getElementById("NomeGioco").value;
+    const ndex = document.getElementById("ndex1").value;
+    const Forma = document.getElementById("forma1").value;
+    const Pokemon = document.getElementById("pokemon1").value;
+    const Livello = document.getElementById("livello1").value;
+    const Sesso = document.getElementById("sesso1").value;
+    const Abilita = document.getElementById("abilita1").value;
+    const Strumento = document.getElementById("strumenti1").value;
+    const PokemonTipo1 = document.getElementById("PKMtipo1").value;
+    const PokemonTipo2 = document.getElementById("PKMtipo2").value;
+    const Mossa1 = document.getElementById("mossa1").value;
+    const Tipo1 = document.getElementById("tipo1").value;
+    const Categoria1 = document.getElementById("categoria1").value;
+    const Mossa2 = document.getElementById("mossa2").value;
+    const Tipo2 = document.getElementById("tipo2").value;
+    const Categoria2 = document.getElementById("categoria2").value;
+    const Mossa3 = document.getElementById("mossa3").value;
+    const Tipo3 = document.getElementById("tipo3").value;
+    const Categoria3 = document.getElementById("categoria3").value;
+    const Mossa4 = document.getElementById("mossa4").value;
+    const Tipo4 = document.getElementById("tipo4").value;
+    const Categoria4 = document.getElementById("categoria4").value;
+
+    document.getElementById("wikicode-result").textContent = ` 
+|pokemon${Numero_Pokemon}={{Pokémon|gen=${Generazione}
+|game=${NomeGioco}
+|ndex=${ndex}${Forma}
+|pokemon=${Pokemon}
+|ability=${Abilita}
+|held=${Strumento}
+|level=${Livello}
+|gender=${Sesso}
+|type1=${PokemonTipo1}
+|type2=${PokemonTipo2}
+|move1=${Mossa1}|move1type=${Tipo1}|move1cat=${Categoria1}
+|move2=${Mossa2}|move2type=${Tipo2}|move2cat=${Categoria2}
+|move3=${Mossa3}|move3type=${Tipo3}|move3cat=${Categoria3}
+|move4=${Mossa4}|move4type=${Tipo4}|move4cat=${Categoria4}
+}}
+
+`;
+
+    const copyButton = document.getElementById("copyButton");
+    const wikicodeResult = document.getElementById("wikicode-result");
+
+    copyButton.addEventListener("click", function () {
+        const range = document.createRange();
+        range.selectNodeContents(wikicodeResult);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        selection.removeAllRanges();
+        copyButton.textContent = "Copiato";
+        setTimeout(function () {
+            copyButton.textContent = "Copia";
+        }, 2000);
+    });
+});
