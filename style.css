@@ -1,21 +1,16 @@
 ﻿body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 14px;
+    padding: 4px;
     background-image: url('https://i.imgur.com/K8Os6io.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.text-titolo {
-    color: white;
-}
-
 #genWikiCodeAllenatore {
     background-color: darkgreen;
+    border: 2px solid black;
     color: #fff;
     padding: 10px 20px;
-    border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -28,18 +23,37 @@
         background-color: forestgreen;
     }
 
+#genWikiCodeSquadra {
+    background-color: darkgreen;
+    border: 2px solid black;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    float: left;
+    clear: left;
+    margin-right: 10px;
+    margin-top: 1px;
+}
+
+    #genWikiCodeSquadra:hover {
+        background-color: forestgreen;
+    }
+
 #copyButton {
     background-color: darkblue;
+    border: 2px solid black;
     color: #fff;
     padding: 8px 16px;
-    border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s;
     float: left;
     clear: left;
     margin-right: 8px;
-    margin-top: 10px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
     #copyButton:hover {
@@ -60,10 +74,6 @@
     flex-direction: column;
     align-items: flex-end;
     text-align: center;
-}
-
-input[type="text"] {
-    margin-top: 5px;
 }
 
 #wikicode-result {
@@ -102,8 +112,9 @@ input {
 }
 
 table {
-    background: url('https://i.imgur.com/E42O3Su.jpeg');
+    background: url('https://i.imgur.com/mCUgURg.jpeg');
     background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
     border-collapse: collapse;
     border-radius: 5px;

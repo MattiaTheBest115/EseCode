@@ -12,6 +12,7 @@
 </head>
 <body>
     <input id="genWikiCodeAllenatore" type="submit" value="Genera WikiCode Allenatore">
+    <input id="genWikiCodeSquadra" type="submit" value="Genera WikiCode Squadra">
     <button id="copyButton">Copia</button>
 
     <div class="containerTOP2">
@@ -19,7 +20,8 @@
             <button type="button" id="BottonePulisciSquadra" onclick="puliziaSquadra();">Pulisci Squadra</button>
             <button type="button" id="BottonePulisciAllenatore" onclick="puliziaAllenatore()">Pulisci Allenatore</button>
         </div>
-        <input type="text" id="VecchiaParola" placeholder="Parola tradotta" readonly>
+        <input type="text" id="VecchiaParola" autocomplete="off" placeholder="Parola tradotta" readonly>
+        <!-- Aggiungere eventuali "dizionari" -->
         <input type="text" id="DizionarioVeloce" autocomplete="off" placeholder="Traduttore veloce" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniStrumenti); traduciElemento(this, traduzioniNomiMosse); traduciElemento(this, traduzioniAbilita); traduciElemento(this, traduzioniNomiPokemon); traduciElemento(this, traduzioniTipo); traduciElemento(this, traduzioniNature); traduciElemento(this, traduzioniPokebigne); traduciElemento(this, traduzioniBolli); traduciElemento(this, traduzioniGrandiSotterranei); traduciElemento(this, traduzioniGiochi); traduciElemento(this, traduzioniSfondi); traduciElemento(this, traduzioniRegioni); traduciElemento(this, traduzioniClassiAllenatori)">
     </div>
 
@@ -75,7 +77,17 @@
             <table id="pokemon-info">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>
+                            <select id="Numero_Pokemon" title="Numero del Pokémon">
+                                <option value="">-</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </th>
                         <th>Pokédex</th>
                         <th>Nome</th>
                         <th>Livello</th>
@@ -96,10 +108,10 @@
                         </td>
                         <td style="text-align: center;">
                             <!-- NOME POKEMON-->
-                            <input style="text-align: center;" type="text" id="pokemon1" list="species" autocomplete="off" class="translation-input" value="Bulbasaur" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniNomiPokemon); capitalizeInput(this)" onblur="impostaBulbasaur(this); impostaNdexDaPokemon(this)">
+                            <input style="text-align: center;" type="text" id="pokemon1" list="species" autocomplete="off" class="translation-input" value="Bulbasaur" onclick="selezionaTesto(this)" oninput="traduciElemento(this, traduzioniNomiPokemon); impostaNdexDaPokemon(this); capitalizeInput(this)" onblur="impostaBulbasaur(this)">
                         </td>
                         <!-- LIVELLO POKEMON-->
-                        <td style="text-align: center;"><input style="text-align: center;" type="number" id="level1" autocomplete="off" class="translation-input" value="1" max="100" min="1" onclick="selezionaTesto(this)" oninput="ValidaLivello(this)" onblur="ValoreAuno(this)"></td>
+                        <td style="text-align: center;"><input style="text-align: center;" type="number" id="level1" autocomplete="off" class="translation-input" value="1" max="100" min="1" onclick="selezionaTesto(this)" oninput="ValidaLivello(this)" onblur="livelloa1(this)"></td>
                         <!-- SESSO POKEMON-->
                         <td style="text-align: center;">
                             <select style="text-align: center;" id="sesso1">

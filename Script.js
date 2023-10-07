@@ -1,5 +1,4 @@
 ﻿document.getElementById('genWikiCodeAllenatore').addEventListener('click', function () {
-
     const Nome_Allenatore = document.getElementById("NomeAllenatore").value;
     const Classe_Allenatore = document.getElementById("ClasseAllenatore").value;
     const Sprite_Allenatore = document.getElementById("SpriteAllenatore").value;
@@ -11,19 +10,34 @@
     const Posizione = document.getElementById("Posizione").value;
     const Regione = document.getElementById("Regione").value;
 
-    const WikiCodeAllenatore = `{{Squadra
-|type=${Colore1}
-|type2=${Colore2}
-|pokemon=${Totale_Pokemon}
-|sprite=${Sprite_Allenatore}
-|prize=${Ricompensa} {{PDollar}}
-|class=${Classe_Allenatore}
-|name=${Nome_Allenatore}
-|game=${Gioco}
+    document.getElementById("wikicode-result").textContent = `{{Squadra
+|type=${Colore1} 
+|type2=${Colore2} 
+|pokemon=${Totale_Pokemon} 
+|sprite=${Sprite_Allenatore} 
+|prize=${Ricompensa} {{PDollar}} 
+|class=${Classe_Allenatore} 
+|name=${Nome_Allenatore} 
+|game=${Gioco} 
 |location=[[${Posizione}]]
-}}`;
+`;
 
-    document.getElementById("wikicode-result").textContent = WikiCodeAllenatore;
+    const copyButton = document.getElementById("copyButton");
+    const wikicodeResult = document.getElementById("wikicode-result");
+
+    copyButton.addEventListener("click", function () {
+        const range = document.createRange();
+        range.selectNodeContents(wikicodeResult);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("copy");
+        selection.removeAllRanges();
+        copyButton.textContent = "Copiato";
+        setTimeout(function () {
+            copyButton.textContent = "Copia";
+        }, 2000); 
+    });
 });
 
 function impostaNdexDaPokemon(inputElement) {
@@ -34,7 +48,12 @@ function impostaNdexDaPokemon(inputElement) {
     var translatedText = Nome_in_Numero[nome_pokemon] || inputElement.value;
 
     if (translatedText !== inputElement.value) {
-        numero_pokedex = translatedText;
+        numero_pokedex.value = translatedText;
+        document.getElementById("immaginepkm1").src = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_" + numero_pokedex.value + ".png";
+    }
+    else {
+        numero_pokedex.value = "???";
+        document.getElementById("immaginepkm1").src = "Immagini/warn.png";
     }
 }
 
@@ -50,6 +69,7 @@ function impostaNomeDaNdex(inputElement) {
     }
     else {
         nome_pokemon.value = "???";
+        document.getElementById("immaginepkm1").src = "Immagini/warn.png";
     }
 }
 
@@ -110,9 +130,12 @@ function ValoreAuno(inputElement) {
         immaginePokémon();
         document.getElementById("pokemon1").value = "Bulbasaur";
     }
-    else if (valore === "" && document.getElementById("level1").id === "level1") {
-        inputElement.value = "1";
-    }
+}
+
+function livelloa1(inputElement) {
+    var valore = inputElement.value;
+
+    inputElement.value = "1";
 }
 
 function impostaBulbasaur(inputElement) {
@@ -154,22 +177,20 @@ function immagineNonTrovata() {
 
 function puliziaAllenatore() {
     // Allenatore
-    document.getElementById('DizionarioVeloce').value = "";
-    document.getElementById('VecchiaParola').value = "";
-    document.getElementById('NomeAllenatore').value = "";
-    document.getElementById('ClasseAllenatore').value = "";
-    document.getElementById('Sprite').value = "";
-    document.getElementById('Colore1').value = "";
-    document.getElementById('Colore2').value = "";
-    document.getElementById('TotalePokemon').value = "1";
-    document.getElementById('Gioco').value = "";
-    document.getElementById('Ricompensa').value = "0";
-    document.getElementById('posizione').value = "";
-    document.getElementById('region').value = "";
+    document.getElementById("NomeAllenatore").value = "";
+    document.getElementById("ClasseAllenatore").value = "";
+    document.getElementById("SpriteAllenatore").value = "";
+    document.getElementById("Colore1").value = "";
+    document.getElementById("Colore2").value = "";
+    document.getElementById("TotalePokemon").value = "1";
+    document.getElementById("Gioco").value = "";
+    document.getElementById("Ricompensa").value = "0";
+    document.getElementById("Posizione").value = "";
+    document.getElementById("Regione").value = "";
 }
 
 function puliziaSquadra() {
-    // Pokémon
+    document.getElementById('Numero_Pokemon').value = "1";
     document.getElementById('immaginepkm1').src = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_1.png";
     document.getElementById('ndex1').value = "1";
     document.getElementById('pokemon1').value = "Bulbasaur";
