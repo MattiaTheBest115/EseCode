@@ -54,6 +54,12 @@ function selezionaTesto(inputElement) {
     inputElement.select();
 }
 
+function capitalizeInput(input) {
+    const inputValue = input.value;
+    const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
+    input.value = capitalizedValue;
+}
+
 function formatNumber(input) {
     input.value = input.value.replace(/[^0-9,.]/g, '');
 
@@ -65,34 +71,7 @@ function formatNumber(input) {
     }
 }
 
-function ValoreaModifica(inputElement) {
-    var inputValue = inputElement.value.trim();
-    var idlivello = ["level1", "level2", "level3", "level4", "level5", "level6"];
-    var idndex = ["ndex2", "ndex2", "ndex2", "ndex2", "ndex2", "ndex2"];
-    var Ricompensa = document.getElementById("Ricompensa");
-
-    if (inputValue === "" || isNaN(inputValue)) {
-        if (!idlivello.includes(inputElement.id) || !idndex.includes(inputElement.id)) {
-            inputElement.value = "1";
-        }
-    }
-    else if (inputElement.id === "ndex1" && (inputValue === "0" || inputValue === "1")) {
-        inputElement.value = "1";
-        immaginePokémon(1);
-    }
-    else if (Ricompensa === "Ricompensa" && inputvalue === "") {
-        inputElement.value = "0";
-    }
-}
-
-function controlloNome(inputElement) {
-    var inputValue = inputElement.value.trim();
-    if (inputValue.value === "") {
-        inputElement.value = "Bulbasaur";
-    }
-}
-
-function validateInput(inputElement) {
+function ValidaLivello(inputElement) {
     var inputValue = inputElement.value;
 
     inputValue = inputValue.replace(/[^0-9]/g, '');
@@ -112,10 +91,44 @@ function validateInput(inputElement) {
     }
 }
 
-function capitalizeInput(input) {
-    const inputValue = input.value;
-    const capitalizedValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1);
-    input.value = capitalizedValue;
+function ValoreAzero(inputElement) {
+    var valore = inputElement.value;
+
+    if (valore === "") {
+        inputElement.value = "0";
+    }
+}
+
+function ValoreAuno(inputElement) {
+    var valore = inputElement.value;
+
+    if (valore === "" && document.getElementById("ndex1").id === "ndex1") {
+        inputElement.value = "1";
+        immaginePokémon();
+        document.getElementById("pokemon1").value = "Bulbasaur";
+    }
+    else if (valore === "" && document.getElementById("level1").id === "level1") {
+        inputElement.value = "1";
+    }
+}
+
+function impostaBulbasaur(inputElement) {
+    if (inputElement.value.trim() === '') {
+        inputElement.value = "Bulbasaur";
+        document.getElementById("immaginepkm1").src = "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Drawing.PokeSprite/Resources/img/Artwork%20Pokemon%20Sprites/a_1.png";
+        document.getElementById("ndex1").value = "1";
+    }
+}
+
+function traduciElemento(inputElement, dizionario) {
+    var inputText = inputElement.value.toLowerCase();
+
+    var translatedText = dizionario[inputText] || inputElement.value;
+
+    if (translatedText !== inputElement.value) {
+        document.getElementById('VecchiaParola').value = inputElement.value;
+        inputElement.value = translatedText;
+    }
 }
 
 function immaginePokémon() {
@@ -128,18 +141,6 @@ function immaginePokémon() {
         if (Numero_Pokedex !== "0" && Numero_Pokedex !== "") {
             immagine.src = url_immaginePrefix + Numero_Pokedex + ".png";
         }
-    }
-}
-
-
-function traduciElemento(inputElement, dizionario) {
-    var inputText = inputElement.value.toLowerCase();
-
-    var translatedText = dizionario[inputText] || inputElement.value;
-
-    if (translatedText !== inputElement.value) {
-        document.getElementById('VecchiaParola').value = inputElement.value;
-        inputElement.value = translatedText;
     }
 }
 
