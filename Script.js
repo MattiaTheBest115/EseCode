@@ -1,54 +1,47 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
-    const copyButton = document.getElementById("copyButton");
-    const form = document.getElementById("pokemon-form");
+﻿function GenerazioneWikiCode() {
+    const Nome_Allenatore = getElementById("NomeAllenatore");
+    const Classe_Allenatore = getElementById("ClasseAllenatore");
+    const Sprite_Allenatore = getElementByID("SpriteAllenatore");
+    const Colore1 = getElementByID("Colore1");
+    const Colore2 = getElementByID("Colore2");
+    const Totale_Pokemon = getElementById("TotalePokemon");
+    const Ricompensa = getElementById("Gioco");
+    const Ricompensa = getElementById("Ricompensa");
+    const Posizione = getElementById("Posizione");
+    const Regione = getElementById("Regione");
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+    
 
-        const NomeAllenatore = document.getElementById("NomeAllenatore").value;
-        const Sprite = document.getElementById("Sprite").value;
-        const ClasseAllenatore = document.getElementById("ClasseAllenatore").value;
-        const TotalePokemon = document.getElementById("TotalePokemon").value;
-        const Colore1 = document.getElementById("Colore1").value;
-        const Colore2 = document.getElementById("Colore2").value;
-        const Ricompensa = document.getElementById("Ricompensa").value;
-        const Gioco = document.getElementById("Gioco").value;
-        const Posizione = document.getElementById("posizione").value;
 
-        // NON CAMBIARE FORMATTAZIONE
-        const wikicode = `{{Squadra
-|type=${Colore1}
-|type2=${Colore2}
-|pokemon=${TotalePokemon}
-|sprite=${Sprite}
-|prize=${Ricompensa} {{PDollar}}
-|class=${ClasseAllenatore}
-|name=${NomeAllenatore}
-|game=${Gioco}
-|location=[[${Posizione}]]
-`;
-        document.getElementById("wikicode-result").textContent = wikicode;
+}
 
-        copyButton.addEventListener("click", function copyToClipboard() {
-            const tempInput = document.createElement("textarea");
-            tempInput.value = wikicode;
-            document.body.appendChild(tempInput);
 
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999);
+function impostaNdexDaPokemon(inputElement) {
+    var nome_pokemon = inputElement.value.toLowerCase();
 
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
+    var numero_pokedex = document.getElementById("ndex1");
 
-            copyButton.textContent = "Copiato!";
-            setTimeout(function () {
-                copyButton.textContent = "Copia";
-            }, 2000);
+    var translatedText = Nome_in_Numero[nome_pokemon] || inputElement.value;
 
-            copyButton.removeEventListener("click", copyToClipboard);
-        });
-    });
-});
+    if (translatedText !== inputElement.value) {
+        numero_pokedex = translatedText;
+    }
+}
+
+function impostaNomeDaNdex(inputElement) {
+    var numero_pokedex = inputElement.value;
+
+    var nome_pokemon = document.getElementById("pokemon1");
+
+    var translatedText = Numero_in_Nome[numero_pokedex] || inputElement.value;
+
+    if (translatedText !== inputElement.value) {
+        nome_pokemon.value = translatedText;
+    }
+    else {
+        nome_pokemon.value = "???";
+    }
+}
 
 function selezionaTesto(inputElement) {
     inputElement.select();
@@ -144,34 +137,9 @@ function immaginePokémon() {
     }
 }
 
-function NumeroInNome(inputElement) {
-    var numero_pokedex = inputElement.value;
-
-    var nome_pokemon = document.getElementById("pokemon1");
-
-    var translatedText = Numero_in_Nome[numero_pokedex] || inputElement.value;
-
-    if (translatedText !== inputElement.value) {
-        nome_pokemon.value = translatedText;
-    }
-    else {
-        nome_pokemon.value = "???";
-    }
-}
-
-function NomeInNumero(inputElement) {
-    var numero_pokedex = inputElement.value.toLowerCase();
-
-    var nome_pokemon = document.getElementById("ndex1");
-
-    var translatedText = Nome_in_Numero[numero_pokedex] || inputElement.value;
-
-    if (translatedText !== inputElement.value) {
-        nome_pokemon.value = translatedText;
-    }
-    else {
-        nome_pokemon.value = "???";
-    }
+function immagineNonTrovata() {
+    var immagine = document.getElementById("immaginepkm1");
+    immagine.src = "Immagini/warn.png";
 }
 
 function puliziaAllenatore() {
