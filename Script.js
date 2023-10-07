@@ -1,20 +1,30 @@
-﻿function GenerazioneWikiCode() {
-    const Nome_Allenatore = getElementById("NomeAllenatore");
-    const Classe_Allenatore = getElementById("ClasseAllenatore");
-    const Sprite_Allenatore = getElementByID("SpriteAllenatore");
-    const Colore1 = getElementByID("Colore1");
-    const Colore2 = getElementByID("Colore2");
-    const Totale_Pokemon = getElementById("TotalePokemon");
-    const Ricompensa = getElementById("Gioco");
-    const Ricompensa = getElementById("Ricompensa");
-    const Posizione = getElementById("Posizione");
-    const Regione = getElementById("Regione");
+﻿document.getElementById('genWikiCode').addEventListener('click', function () {
 
-    
+    const Nome_Allenatore = document.getElementById("NomeAllenatore").value;
+    const Classe_Allenatore = document.getElementById("ClasseAllenatore").value;
+    const Sprite_Allenatore = document.getElementById("SpriteAllenatore").value;
+    const Colore1 = document.getElementById("Colore1").value;
+    const Colore2 = document.getElementById("Colore2").value;
+    const Totale_Pokemon = document.getElementById("TotalePokemon").value;
+    const Gioco = document.getElementById("Gioco").value;
+    const Ricompensa = document.getElementById("Ricompensa").value;
+    const Posizione = document.getElementById("Posizione").value;
+    const Regione = document.getElementById("Regione").value;
 
+    const WikiCodeAllenatore = `{{Squadra
+|type=${Colore1}
+|type2=${Colore2}
+|pokemon=${Totale_Pokemon}
+|sprite=${Sprite_Allenatore}
+|prize=${Ricompensa} {{PDollar}}
+|class=${Classe_Allenatore}
+|name=${Nome_Allenatore}
+|game=${Gioco}
+|location=[[${Posizione}]]
+}}`;
 
-}
-
+    document.getElementById("wikicode-result").textContent = WikiCodeAllenatore;
+});
 
 function impostaNdexDaPokemon(inputElement) {
     var nome_pokemon = inputElement.value.toLowerCase();

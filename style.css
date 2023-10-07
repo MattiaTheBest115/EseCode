@@ -30,23 +30,14 @@
 
 #copyButton {
     background-color: darkblue;
-    /* Colore del testo all'interno del pulsante */
     color: #fff;
-    /* Spaziatura interna del pulsante (10px sopra e sotto, 20px a sinistra e destra) */
     padding: 10px 20px;
-    /* Rimuove il bordo del pulsante */
     border: none;
-    /* Angoli arrotondati del pulsante */
     border-radius: 4px;
-    /* Cambia l'icona del cursore al passaggio sopra il pulsante */
     cursor: pointer;
-    /* Effetto di transizione del colore di sfondo in 0.3 secondi */
     transition: background-color 0.3s;
-    /* Posiziona l'elemento a sinistra rispetto agli elementi successivi */
     float: left;
-    /* Cancella il float a sinistra per evitare l'interferenza con gli elementi successivi */
     clear: left;
-    /* Margine a destra dell'elemento (10px di spazio a destra) */
     margin-right: 10px;
 }
 
@@ -81,7 +72,6 @@ input[type="text"] {
     border-radius: 4px;
     background-color: #fff;
     clear: both;
-    animation: rainbow 5s linear infinite;
 }
 
 .container {
